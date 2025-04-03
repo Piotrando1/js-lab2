@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +13,11 @@
         h1 {
             color: #0B3954;
         }
+
+        .green {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -24,9 +30,53 @@
         <li>Nauczyć się JS</li>
         <li id="super-important">Zaimplementować</li>
     </ol>
+
+    <button type="button" onclick="removeBoringStuff()">Usuń nudne rzeczy</button>
+
+    <br><br>
+
+    <input type="text" id="myTextField" placeholder="Wpisz coś">
+    <input type="checkbox" id="myCheckbox">
+    <button type="button" onclick="readValues()">Odczytaj wartości</button>
+
 </div>
+
+
 <script>
-    alert('Witamy witamy');
+    // const header = document.getElementById('main-header');
+    // header.innerText = "Inny header";
+    //
+    // const nudy = document.querySelectorAll("#app .boring");
+    // nudy.forEach(element => {
+    //     alert(`Nuda: ${element.innerText}`);
+    //     element.classList.remove('boring');
+    // });
+
+    let div = document.createElement('div');
+    div.classList.add('green');
+    div.innerText = 'Zielony tekst (jeśli dodasz CSS)';
+    document.getElementById('app').append(div); // jest też prepend
+
+    let listItem = document.createElement('li');
+    listItem.innerText = 'Zagrać';
+    // dodaję na koniec listy
+    document.querySelector("#app ol li:last-child").after(listItem); // jest też before
+
+    function removeBoringStuff(){
+        document.querySelectorAll("#app .boring").forEach((e) => e.remove());
+    }
+
+    function readValues() {
+        let textValue = document.getElementById("myTextField").value;
+        let isChecked = document.getElementById("myCheckbox").checked;
+
+        if (isChecked) {
+            alert(`Wartość pola tekstowego: ${textValue}`);
+        } else {
+            alert("Checkbox nie jest zaznaczony, wartość pola tekstowego nie zostanie wyświetlona.");
+        }
+    }
 </script>
 </body>
 </html>
+
